@@ -1,5 +1,9 @@
 package io.github.faizansaghir.crudAdvancedMappingInSpringBoot;
 
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao.AppDAO;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +17,39 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args){
+	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			System.out.println("Hello World!!!");
+			createInstructor(appDAO);
 		};
+	}
+
+	private void createInstructor(AppDAO appDAO) {
+
+		/*
+		Instructor instructor = new Instructor(
+				"Faizan", "Saghir", "faizan@abc.com"
+		);
+
+		InstructorDetail instructorDetail = new InstructorDetail(
+				"http://www.youtube.com/faizan", "Code and learn"
+		);
+		*/
+
+		Instructor instructor = new Instructor(
+				"Alpha", "Tech", "alpha@abc.com"
+		);
+
+		InstructorDetail instructorDetail = new InstructorDetail(
+				"http://www.youtube.com/a_tech", "Technical analysis"
+		);
+
+		instructor.setInstructorDetail(instructorDetail);
+
+		System.out.println(instructor);
+
+		appDAO.save(instructor);
+
+		System.out.println("Done");
+
 	}
 }
