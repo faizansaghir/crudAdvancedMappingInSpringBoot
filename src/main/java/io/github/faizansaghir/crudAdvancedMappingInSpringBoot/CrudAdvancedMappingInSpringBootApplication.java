@@ -19,8 +19,21 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			createInstructor(appDAO);
+			// createInstructor(appDAO);
+			findInstructor(appDAO);
 		};
+	}
+
+	private void findInstructor(AppDAO appDAO) {
+		int id = 2;
+		System.out.println(STR."Finding instructor with id: \{id}");
+
+		Instructor instructor = appDAO.findInstructorById(id);
+
+		System.out.println(STR."Instructor: \{instructor}");
+		System.out.println(
+				STR."Associated InstructorDetail: \{instructor.getInstructorDetail()}"
+		);
 	}
 
 	private void createInstructor(AppDAO appDAO) {

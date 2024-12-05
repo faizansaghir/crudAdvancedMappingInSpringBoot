@@ -21,4 +21,9 @@ public class AppDAOImpl implements AppDAO{
     public void save(Instructor instructor) {
         entityManager.merge(instructor);
     }
+
+    @Override
+    public Instructor findInstructorById(int id) {
+        return entityManager.find(Instructor.class, id);
+    }
 }
