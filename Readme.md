@@ -55,7 +55,7 @@ Repository to track development and learning for different mappings in SpringBoo
                 <li>Get the parent entity class object</li>
                 <li>Set the sub entity field attribute to null</li>
             </ul>
-            If only unidirectional mapping is present
+            If only unidirectional mapping present
             <ul>
                 <li>Get the parent entity class object using entity manager</li>
                 <li>Set the sub entity field attribute to null</li>
