@@ -24,4 +24,12 @@ Repository to track development and learning for different mappings in SpringBoo
     The <code>mappedBy</code> attribute takes the name of the field in parent entity class which is referencing the current entity. <br>
     <em>Note: The parent entity class is the one mapped to table containing the foreign key column.</em> <br>
     <pre>Example:
-        </pre>
+        @Entity
+        @Table(name = "instructor_detail")
+        public class InstructorDetail {
+            ...
+            @OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+            private Instructor instructor;
+            ...
+        }
+    <em>The above code maps the instructor field using the instructorDetail field in the Instructor entity</em></pre> <br>
