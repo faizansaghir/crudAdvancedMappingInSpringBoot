@@ -21,8 +21,23 @@ public class CrudAdvancedMappingInSpringBootApplication {
 		return runner -> {
 			// createInstructor(appDAO);
 			// findInstructor(appDAO);
-			deleteInstructor(appDAO);
+			// deleteInstructor(appDAO);
+			findInstructorDetail(appDAO);
 		};
+	}
+
+	private void findInstructorDetail(AppDAO appDAO) {
+		int id = 1;
+
+		System.out.println(STR."Finding instructor detail with id: \{id}");
+
+		InstructorDetail instructorDetail = appDAO.findInstructorDetailById(id);
+
+		System.out.println(STR."InstructorDetail: \{instructorDetail}");
+		System.out.println(
+				STR."Associated Instructor: \{instructorDetail.getInstructor()}"
+		);
+
 	}
 
 	private void deleteInstructor(AppDAO appDAO) {

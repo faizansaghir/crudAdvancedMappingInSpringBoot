@@ -19,3 +19,9 @@ Repository to track development and learning for different mappings in SpringBoo
        }
     <em>The above code creates a one-to-one mapping between Instructor and InstructorDetail class 
     It uses "instructor_detail_id" column for performing the join to get InstructorDetail</em> </pre> <br>
+2. <strong>@OneToOne with mappedBy</strong> <br>
+    When the annotation <code>@OneToOne</code> is used with <code>mappedBy</code> attribute, it can be used to set up bidirectional mapping. <br>
+    The <code>mappedBy</code> attribute takes the name of the field in parent entity class which is referencing the current entity. <br>
+    <em>Note: The parent entity class is the one mapped to table containing the foreign key column.</em> <br>
+    <pre>Example:
+        </pre>
