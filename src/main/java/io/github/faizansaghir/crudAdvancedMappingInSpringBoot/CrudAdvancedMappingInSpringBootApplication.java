@@ -28,7 +28,7 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
-		int id = 1;
+		int id = 3;
 
 		System.out.println(STR."Deleting instructor detail with id: \{id}");
 

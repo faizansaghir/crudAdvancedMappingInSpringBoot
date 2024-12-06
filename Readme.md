@@ -33,3 +33,21 @@ Repository to track development and learning for different mappings in SpringBoo
             ...
         }
     <em>The above code maps the instructor field using the instructorDetail field in the Instructor entity</em></pre> <br>
+3. <strong>Setting foreign_key to Null for Parent Entity</strong> <br>
+    If we do not wish to delete the parent entity but set the foreign key id column to null on deletion of sub entity, <br>
+    we can follow the following steps:
+    <ol>
+        <li>Set cascade to all other type except <code>CascadeType.REMOVE</code></li>
+        <li>Before deleting the sub entity object, break the bidirectional mapping if present
+            <ul>
+                <li>Get the parent entity class object</li>
+                <li>Set the sub entity field attribute to null</li>
+            </ul>
+            If only unidirectional mapping is present
+            <ul>
+                <li>Get the parent entity class object using entity manager</li>
+                <li>Set the sub entity field attribute to null</li>
+            </ul>
+        </li>
+        <li>Use the entity manager to delete the sub entity class object</li>
+    </ol> <br><br>
