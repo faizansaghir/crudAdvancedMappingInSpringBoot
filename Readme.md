@@ -37,7 +37,19 @@ Repository to track development and learning for different mappings in SpringBoo
     If we do not wish to delete the parent entity but set the foreign key id column to null on deletion of sub entity, <br>
     we can follow the following steps:
     <ol>
-        <li>Set cascade to all other type except <code>CascadeType.REMOVE</code></li>
+        <li>Set cascade to all other type except <code>CascadeType.REMOVE</code> in sub entity class
+            <pre>Example:
+        @Entity
+        @Table(name = "instructor_detail")
+        public class InstructorDetail {
+            ...
+            @OneToOne(mappedBy = "instructorDetail", cascade = {
+                CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+            })
+            private Instructor instructor;
+            ...
+        }</pre>
+        </li>
         <li>Before deleting the sub entity object, break the bidirectional mapping if present
             <ul>
                 <li>Get the parent entity class object</li>
