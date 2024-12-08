@@ -63,3 +63,43 @@ Repository to track development and learning for different mappings in SpringBoo
         </li>
         <li>Use the entity manager to delete the sub entity class object</li>
     </ol> <br><br>
+4. <strong>@OneToMany and @ManyToOne</strong> <br>
+   <strong>@OneToMany</strong>: Annotated on field which is <code>List</code> representing a one-to-many relation in database. <br>
+   &emsp;This is used in combination with its attribute <code>mappedBy</code> which refers to field in entity that has many-to-one mapping. <br>
+   <pre>Example:
+      @Entity
+      public class Instructor {
+         ...
+         @OneToMany(mappedBy = "instructor", cascade = {
+            CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+         })
+         private List&lt;Course&gt; courses;
+         ...
+      }</pre>
+   <strong>@ManyToOne</strong>: Annotated on field which has many-to-one relationship with another entity class. <br>
+   Used in combination with <code>@JoinColumn</code> with attribute <code>name</code> which refers to the column which acts as foreign key. <br>
+   <pre>Example:
+      @Entity
+      public class Course {
+         ...
+         @ManyToOne(cascade = {
+            CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+         })
+         @JoinColumn(name = "instructor_id")
+         private Instructor instructor;
+         ...
+      }</pre>
+   To establish a bidirectional relation between the entities, we can define an add method as follows: <br>
+   <pre>Example:
+      @Entity
+      public class Instructor {
+         ...
+         public void add(Course course){
+            if(courses==null){
+               courses = new ArrayList<>();
+            }
+            courses.add(course);
+            course.setInstructor(this);
+         }
+         ...
+      }</pre> <br>
