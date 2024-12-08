@@ -62,7 +62,7 @@ Repository to track development and learning for different mappings in SpringBoo
             </ul>
         </li>
         <li>Use the entity manager to delete the sub entity class object</li>
-    </ol> <br><br>
+    </ol> <br>
 4. <strong>@OneToMany and @ManyToOne</strong> <br>
    <strong>@OneToMany</strong>: Annotated on field which is <code>List</code> representing a one-to-many relation in database. <br>
    &emsp;This is used in combination with its attribute <code>mappedBy</code> which refers to field in entity that has many-to-one mapping. <br>
