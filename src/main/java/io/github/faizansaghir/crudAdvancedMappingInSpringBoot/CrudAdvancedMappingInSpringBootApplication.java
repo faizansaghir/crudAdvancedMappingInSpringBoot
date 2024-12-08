@@ -1,6 +1,7 @@
 package io.github.faizansaghir.crudAdvancedMappingInSpringBoot;
 
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao.AppDAO;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Course;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,34 @@ public class CrudAdvancedMappingInSpringBootApplication {
 			// findInstructor(appDAO);
 			// deleteInstructor(appDAO);
 			// findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+			// deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+		Instructor instructor = new Instructor(
+				"Alpha", "Guide", "alpha@abc.com"
+		);
+
+		InstructorDetail instructorDetail = new InstructorDetail(
+				"http://www.youtube.com/alphaGuide", "Gaming"
+		);
+
+		instructor.setInstructorDetail(instructorDetail);
+
+		Course course1 = new Course("Learn spanish");
+		Course course2 = new Course("Software development");
+
+		instructor.add(course1);
+		instructor.add(course2);
+
+		System.out.println(STR."Saving instructor: \{instructor}");
+		System.out.println(STR."Courses: \{instructor.getCourses()}");
+
+		appDAO.save(instructor);
+
+		System.out.println("Done");
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
