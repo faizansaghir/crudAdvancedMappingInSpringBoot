@@ -62,4 +62,7 @@ Repository to track development and learning for different mappings in SpringBoo
             </ul>
         </li>
         <li>Use the entity manager to delete the sub entity class object</li>
-    </ol> <br><br>
+    </ol> <br>
+4. <strong>One-to-many and Many-to-one Mapping</strong> <br>
+   Checkout [feat/one-to-many](https://github.com/faizansaghir/crudAdvancedMappingInSpringBoot/tree/feat/one-to-many) <br><br>
+
