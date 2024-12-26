@@ -28,8 +28,24 @@ public class CrudAdvancedMappingInSpringBootApplication {
 			// findInstructorDetail(appDAO);
 			// deleteInstructorDetail(appDAO);
 			// createInstructorWithCourses(appDAO);
-			findInstructorWithCourses(appDAO);
+			// findInstructorWithCourses(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+
+		int id = 1;
+
+		System.out.println(STR."Finding instructor with id: \{id}");
+
+		Instructor instructor = appDAO.findInstructorByIdJoinFetch(id);
+
+		System.out.println(STR."Instructor: \{instructor}");
+
+		System.out.println(
+				STR."Associated Courses: \{instructor.getCourses()}"
+		);
 	}
 
 	private void findInstructorWithCourses(AppDAO appDAO) {
