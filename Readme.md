@@ -111,11 +111,12 @@ Repository to track development and learning for different mappings in SpringBoo
          @Entity
          public class Instructor {
             ...
-            @OneToMany(mappedBy = "instructor", cascade = {
-                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
-            }, fetch = FetchType.EAGER)
+            @OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor", cascade = {
+               CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+            })
             private List&lg;Course%gt; courses;
             ...
          }</pre>
    <em>Note: If we doi not load the <code>courses</code> eagerly, while using <code>getCourses()</code> function to get the associated courses, <br>
       It will throw error as courses has not been loaded due to Lazy initialization as default fetch type for <code>OneToMany</code>.</em> <br><br>
+   Checkout [feat/one-to-many-with-lazy](https://github.com/faizansaghir/crudAdvancedMappingInSpringBoot/tree/feat/one-to-many-with-lazy) for solving Lazy load issue without Eager loading <br><br> 
