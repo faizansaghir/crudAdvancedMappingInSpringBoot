@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CrudAdvancedMappingInSpringBootApplication {
 
@@ -38,6 +40,13 @@ public class CrudAdvancedMappingInSpringBootApplication {
 		Instructor instructor = appDAO.findInstructorById(id);
 
 		System.out.println(STR."Instructor: \{instructor}");
+
+		System.out.println(STR."Finding courses for instructor id: \{id}");
+
+		List<Course> courses = appDAO.getCoursesByInstructorId(id);
+
+		instructor.setCourses(courses);
+
 		System.out.println(
 				STR."Associated Courses: \{instructor.getCourses()}"
 		);
