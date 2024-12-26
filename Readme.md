@@ -103,3 +103,19 @@ Repository to track development and learning for different mappings in SpringBoo
          }
          ...
       }</pre> <br>
+5. <strong>Fetch Type</strong> <br>
+   When we have a relationship mapping between two entities, we can have either Lazy or Eager loading. <br>
+   ![Default Fetch Type](./img/defaultFetchType.PNG "DefaultFetchType")
+   We can also specify the fetch type i.e. override the fetch type using fetch attribute in mapping annotation
+   <pre>Example:
+         @Entity
+         public class Instructor {
+            ...
+            @OneToMany(mappedBy = "instructor", cascade = {
+                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+            }, fetch = FetchType.EAGER)
+            private List&lg;Course%gt; courses;
+            ...
+         }</pre>
+   <em>Note: If we doi not load the <code>courses</code> eagerly, while using <code>getCourses()</code> function to get the associated courses, <br>
+      It will throw error as courses has not been loaded due to Lazy initialization as default fetch type for <code>OneToMany</code>.</em> <br><br>
