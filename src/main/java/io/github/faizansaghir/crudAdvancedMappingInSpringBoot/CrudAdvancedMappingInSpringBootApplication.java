@@ -4,6 +4,7 @@ import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao.AppDAO;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Course;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +23,23 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-
+			createCourseAndReviews(appDAO);
 		};
+	}
+
+	private void createCourseAndReviews(AppDAO appDAO) {
+		Course course = new Course("Pacman- How to score one million points");
+		course.addReview(new Review("Great course... loved it!!!"));
+		course.addReview(new Review("Cool course, job well done."));
+		course.addReview(new Review("What a dumb course, you are an idiot"));
+
+		System.out.println("Saving the course");
+		System.out.println(course);
+		System.out.println(course.getReviews());
+
+		appDAO.save(course);
+
+		System.out.println("Done");
 	}
 
 	private void deleteCourse(AppDAO appDAO) {
