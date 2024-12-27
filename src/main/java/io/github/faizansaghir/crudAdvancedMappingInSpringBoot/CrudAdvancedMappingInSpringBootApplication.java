@@ -22,18 +22,7 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
-			// createInstructor(appDAO);
-			// findInstructor(appDAO);
-			// deleteInstructor(appDAO);
-			// findInstructorDetail(appDAO);
-			// deleteInstructorDetail(appDAO);
-			// createInstructorWithCourses(appDAO);
-			// findInstructorWithCourses(appDAO);
-			// findInstructorWithCoursesJoinFetch(appDAO);
-			// updateInstructor(appDAO);
-			// updateCourse(appDAO);
-			// deleteInstructor(appDAO);
-			deleteCourse(appDAO);
+
 		};
 	}
 
