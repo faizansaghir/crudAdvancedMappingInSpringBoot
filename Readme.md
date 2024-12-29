@@ -119,3 +119,4 @@ Repository to track development and learning for different mappings in SpringBoo
          }</pre>
    <em>Note: If we doi not load the <code>courses</code> eagerly, while using <code>getCourses()</code> function to get the associated courses, <br>
       It will throw error as courses has not been loaded due to Lazy initialization as default fetch type for <code>OneToMany</code>.</em> <br><br>
+6. Checkout [feat/many-to-many](https://github.com/faizansaghir/crudAdvancedMappingInSpringBoot/tree/feat/many-to-many) for detail and implementation of Many-To-Many mapping. <br><br>
