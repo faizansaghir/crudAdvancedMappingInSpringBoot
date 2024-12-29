@@ -119,3 +119,8 @@ Repository to track development and learning for different mappings in SpringBoo
          }</pre>
    <em>Note: If we doi not load the <code>courses</code> eagerly, while using <code>getCourses()</code> function to get the associated courses, <br>
       It will throw error as courses has not been loaded due to Lazy initialization as default fetch type for <code>OneToMany</code>.</em> <br><br>
+6. <strong>@ManyToMany</strong> <br>
+   Annotated on fields that have a many-to-many relationship with some other entity using some join table as intermediate. <br>
+   We use this annotation in combination with <code>@JoinTable</code>. <br><br>
+7. <strong>@JoinTable</strong> <br>
+   Annotated on field having a many-to-many relation with another entity. <br>
