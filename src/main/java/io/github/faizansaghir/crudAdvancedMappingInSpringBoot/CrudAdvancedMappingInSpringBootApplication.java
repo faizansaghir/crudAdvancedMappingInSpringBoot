@@ -1,10 +1,7 @@
 package io.github.faizansaghir.crudAdvancedMappingInSpringBoot;
 
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao.AppDAO;
-import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Course;
-import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
-import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
-import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Review;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +21,28 @@ public class CrudAdvancedMappingInSpringBootApplication {
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 		return runner -> {
 
+			createCourseAndStudents(appDAO);
+
 		};
+	}
+
+	private void createCourseAndStudents(AppDAO appDAO) {
+
+		Course course = new Course("Pacman- How To Score A Million Score");
+
+		Student student1 = new Student("John", "Doe", "john@example.com");
+		Student student2 = new Student("Mary", "Public", "mary@example.com");
+
+		course.addStudent(student1);
+		course.addStudent(student2);
+
+		System.out.println(STR."Saving the course \{course}");
+		System.out.println(STR."Associated students: \{course.getStudents()}");
+
+		appDAO.save(course);
+
+		System.out.println("Done!");
+
 	}
 
 	private void deleteCourseAndReviews(AppDAO appDAO) {
