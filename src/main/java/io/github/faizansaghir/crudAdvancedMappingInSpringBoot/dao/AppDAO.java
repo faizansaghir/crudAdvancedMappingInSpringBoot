@@ -3,6 +3,7 @@ package io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Course;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Student;
 
 import java.util.List;
 
@@ -35,4 +36,6 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(int id);
 
     Course findCourseAndStudentsByCourseId(int id);
+
+    Student findStudentAndCoursesByStudentId(int id);
 }

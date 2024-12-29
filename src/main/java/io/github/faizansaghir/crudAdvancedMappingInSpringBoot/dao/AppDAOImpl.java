@@ -3,6 +3,7 @@ package io.github.faizansaghir.crudAdvancedMappingInSpringBoot.dao;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Course;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Instructor;
 import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.InstructorDetail;
+import io.github.faizansaghir.crudAdvancedMappingInSpringBoot.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,6 +133,17 @@ public class AppDAOImpl implements AppDAO{
                 "select c from Course c "
                         + "join fetch c.students "
                         + "where c.id = :data", Course.class
+        );
+        query.setParameter("data", id);
+        return query.getSingleResult();
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int id) {
+        TypedQuery<Student> query = entityManager.createQuery(
+                "select s from Student s "
+                        + "join fetch s.courses "
+                        + "where s.id = :data", Student.class
         );
         query.setParameter("data", id);
         return query.getSingleResult();
