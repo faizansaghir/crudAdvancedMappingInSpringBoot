@@ -124,3 +124,26 @@ Repository to track development and learning for different mappings in SpringBoo
    We use this annotation in combination with <code>@JoinTable</code>. <br><br>
 7. <strong>@JoinTable</strong> <br>
    Annotated on field having a many-to-many relation with another entity. <br>
+   It has attributes such as: <br>
+   <ul>
+      <li><strong>name:</strong> Name of the join table</li>
+      <li><strong>joinColumns:</strong> Name of the column in join table that refers to the Id in current Entity</li>
+      <li><strong>inverseJoinColumns:</strong> Name of the column in join table that refers to the Id in other Entity</li>
+   </ul>
+   <pre>Example:
+      If we are in Student Entity,
+      @Entity
+      @Table(name = "student")
+      public class Student {
+         ...
+         @ManyToMany(fetch = FetchType.LAZY, cascade = {
+            CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH
+         })
+         @JoinTable(
+               name = "course_student",
+               joinColumns = @JoinColumn(name = "student_id"),
+               inverseJoinColumns = @JoinColumn(name = "course_id")
+         )
+         private List&lt;Course&gt; courses;
+         ...
+      }</pre> <br>
