@@ -23,9 +23,30 @@ public class CrudAdvancedMappingInSpringBootApplication {
 
 			// createCourseAndStudents(appDAO);
 			// findCourseAndStudents(appDAO);
-			findStudentAndCourses(appDAO);
+			// findStudentAndCourses(appDAO);
+			addMoreCoursesForStudent(appDAO);
 
 		};
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		int id = 2;
+
+		Student student = appDAO.findStudentAndCoursesByStudentId(2);
+
+		Course course1 = new Course("Rubik's Cube - How to Speed Cube");
+		Course course2 = new Course("Atari 2600 - Game Development");
+
+		student.addCourse(course1);
+		student.addCourse(course2);
+
+		System.out.println(STR."Updating student: \{student}");
+		System.out.println(STR."Associated courses: \{student.getCourses()}");
+
+		appDAO.update(student);
+
+		System.out.println("Done!");
+
 	}
 
 	private void findStudentAndCourses(AppDAO appDAO) {
