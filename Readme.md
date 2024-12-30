@@ -66,6 +66,8 @@ Repository to track development and learning for different mappings in SpringBoo
 4. <strong>@OneToMany and @ManyToOne</strong> <br>
    <strong>@OneToMany</strong>: Annotated on field which is <code>List</code> representing a one-to-many relation in database. <br>
    &emsp;This is used in combination with its attribute <code>mappedBy</code> which refers to field in entity that has many-to-one mapping. <br>
+   &emsp; If we do not mention <code>mappedBy</code> then the class with this annotation will create a mapping table separately. <br>
+   &emsp; <code>mappedBy</code> tells the Entity that the mapping column is handled by the other entity and not mapping table. <br>
    <pre>Example:
       @Entity
       public class Instructor {
