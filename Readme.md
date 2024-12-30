@@ -68,6 +68,8 @@ Repository to track development and learning for different mappings in SpringBoo
    &emsp;This is used in combination with its attribute <code>mappedBy</code> which refers to field in entity that has many-to-one mapping. <br>
    &emsp; If we do not mention <code>mappedBy</code> then the class with this annotation will create a mapping table separately. <br>
    &emsp; <code>mappedBy</code> tells the Entity that the mapping column is handled by the other entity and not mapping table. <br>
+   &emsp; Similarly for <code>@ManyToMany</code>, if we do not specify <code>mappedBy</code> in either of the Entity, both will create mapping tables. <br>
+   &emsp;&emsp; The first will create <code>entity1_entity2</code>, the second will create <code>entity2_entity1</code>, but we also have <code>@JoinTable</code> to handle this. <br> 
    <pre>Example:
       @Entity
       public class Instructor {
